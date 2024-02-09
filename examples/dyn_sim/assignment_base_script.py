@@ -56,7 +56,6 @@ if __name__ == '__main__':
     I_stored = []
 
     event_flag1 = True
-    sc_bus_idx = ps.gen['GEN'].bus_idx_red['terminal'][0]
     # endregion
 
     # Simulation loop starts here!
@@ -66,11 +65,19 @@ if __name__ == '__main__':
         v = sol.v
         t = sol.t
 
-        # Short circuit
-        if t >= 1 and t <= 1.05:
-            ps.y_bus_red_mod[(sc_bus_idx,) * 2] = 1e6
-        else:
-            ps.y_bus_red_mod[(sc_bus_idx,) * 2] = 0
+        #Simulation of short-circuit (Assignment 3):
+        #if (...):
+        #    ps.y_bus_red_mod[ , ] =
+        #else:
+        #    ps.y_bus_red_mod[ , ] =
+
+        #'y_bus_red_mod' refers to the fault admittance, the inverse of fault impedance.
+        #Fault: impedance = zero --> admittance = ?
+
+
+        #[0, 0]: corresponds to 'B1' (generator bus).
+        #[1, 1]: corresponds to 'B2' (load bus).
+        #[2, 2]: corresponds to 'B3' (stiff network).
 
         # region Store variables
         result_dict['Global', 't'].append(sol.t)
