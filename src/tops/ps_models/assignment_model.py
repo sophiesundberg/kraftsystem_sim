@@ -53,8 +53,8 @@ def load():
         'generators': {
             'GEN': [
                 ['name',   'bus',  'S_n',  'V_n',    'P',    'V',      'H',    'D',    'X_d',  'X_q',  'X_d_t',    'X_q_t',    'X_d_st',   'X_q_st',   'T_d0_t',   'T_q0_t',   'T_d0_st',  'T_q0_st'],
-                ['G1',      'B1',     50,     10,     40,   0.93,      3.1,      0,     2.27,   2.12,    0.544,      0.522,        0.11,      0.07,        2.01,         50,           1,        0.5],
-                ['IB',      'B3',  10000,    245,    -15,  0.898,     10.0,      0,      1.0,   0.80,      0.3,       0.80,         0.2,       0.23,          8,      10000,        0.03,       0.07],
+                ['G1',      'B1',     50,     10,     40,  0.933,      3.1,      0,     1.05,   0.66,    0.328,      0.66,       0.254,      0.273,       2.49,      10000,         0.06,       0.15],
+                ['IB',      'B3',  10000,    245,    -15,  0.898,   1000.0,      0,     1.05,   0.66,    0.328,      0.66,       0.254,      0.273,       2.49,      10000,         0.06,       0.15],
             ],
         }
     }
@@ -63,11 +63,11 @@ def load():
         #'S_n': base/nominal complex power in [MVA].
         #'V_n': base/nominal voltage in [kV].
         #'P': active power produced by the generator in [MW].
-        #'V': generator terminal voltage in [pu].
+        #'V': magnitude of generator terminal voltage in [pu].
         #'H': inertia constant in [MWs/MVA].
-        #'D': damping constant in [pu/pu].
+        #'D': damping constant in [pu-power/pu-speed].
         #'X_d'/'X_q': synchronous d-axis/q-axis reactance in [pu].
         #'X_d_t'/'X_q_t': transient d-axis/q-axis reactance in [pu].
         #'X_d_st'/'X_q_st': subtransient d-axis/q-axis reactance in [pu].
         #'T_d0_t'/'T_q0_t': open-circuit d-axis/q-axis transient time constant in [s].
-        # 'T_d0_st'/'T_q0_st': open-circuit d-axis/q-axis subtransient time constant in [s]
+        # 'T_d0_st'/'T_q0_st': open-circuit d-axis/q-axis subtransient time constant in [s].
