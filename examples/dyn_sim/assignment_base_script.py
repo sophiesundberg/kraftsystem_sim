@@ -36,10 +36,11 @@ if __name__ == '__main__':
     v_bus_angle = ps.v_0.imag / v_bus_mag
     #
     print(' ')
-    print('Voltage magnitudes (p.u) = ', v_bus_mag)
-    print('Voltage angles     (rad) = ', v_bus_angle)
+    print('Voltage magnitudes  (pu) = ', v_bus_mag)
+    print('Voltage magnitudes  (kV) = ', v_bus_mag * [10, 245, 245])
     print(' ')
-    print('Voltage magnitudes  (kV) = ', v_bus_mag*[10, 245, 245])
+    print('Voltage angles     (rad) = ', v_bus_angle)
+    print('Voltage angles (degrees) = ', v_bus_angle * [180/np.pi, 180/np.pi, 180/np.pi])
     print(' ')
     print('state description: \n', ps.state_desc)
     print('Initial values on all state variables (G1 and IB) :')
@@ -65,19 +66,21 @@ if __name__ == '__main__':
         v = sol.v
         t = sol.t
 
-        #Simulation of short-circuit (Assignment 3):
+        ################  Assignment 3 / 4: Simulation of short-circuit  ################
+
         #if (...):
         #    ps.y_bus_red_mod[ , ] =
         #else:
         #    ps.y_bus_red_mod[ , ] =
 
-        #'y_bus_red_mod' refers to the fault admittance, the inverse of fault impedance.
-        #Fault: impedance = zero --> admittance = ?
+        ##'y_bus_red_mod' refers to the fault admittance, the inverse of fault impedance.
+        ##Fault: impedance = zero --> admittance = ?
 
+        ##[0, 0]: corresponds to 'B1' (generator bus).
+        ##[1, 1]: corresponds to 'B2' (load bus).
+        ##[2, 2]: corresponds to 'B3' (stiff network).
 
-        #[0, 0]: corresponds to 'B1' (generator bus).
-        #[1, 1]: corresponds to 'B2' (load bus).
-        #[2, 2]: corresponds to 'B3' (stiff network).
+        #################################################################################
 
         # region Store variables
         result_dict['Global', 't'].append(sol.t)
