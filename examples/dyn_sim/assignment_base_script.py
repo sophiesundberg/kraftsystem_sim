@@ -24,9 +24,6 @@ if __name__ == '__main__':
     result_dict = defaultdict(list)
     t_end = 5  # Simulation time
 
-    # Possible to add perturbation directly through states:
-    # x0[ps.gen_mdls['GEN'].state_idx['angle'][0]] += 1  #initial angle of first generator
-
     # Solver
     sol = dps_sol.ModifiedEulerDAE(ps.state_derivatives, ps.solve_algebraic, 0, x0, t_end, max_step=5e-3)
     # endregion
@@ -56,7 +53,7 @@ if __name__ == '__main__':
     v_bus = []
     I_stored = []
 
-    event_flag1 = True
+    event_flag1 = True #A different one for each system event
     # endregion
 
     # Simulation loop starts here!
@@ -82,6 +79,22 @@ if __name__ == '__main__':
 
         #################################################################################
 
+        ######  Assignment 5: Short-circuit with line disconnection & reconnection ######
+
+        #if (...) and (...):
+        #   (...)
+        #   ps.y_bus_red_mod[ , ] =
+
+        #if (...) and (...):
+        #    (...)
+        #    ps.lines['Line'].event(ps, ps.lines['Line'].par['name'][0], 'disconnect')
+        #    ps.y_bus_red_mod[ , ] =
+
+        #if (...) and (...):
+        #    (...)
+        #    ps.lines['Line'].event(ps, ps.lines['Line'].par['name'][0], 'connect')
+        #################################################################################
+
         # region Store variables
         result_dict['Global', 't'].append(sol.t)
         [result_dict[tuple(desc)].append(state) for desc, state in zip(ps.state_desc, x)]
@@ -99,19 +112,28 @@ if __name__ == '__main__':
     result = pd.DataFrame(result_dict, columns=pd.MultiIndex.from_tuples(result_dict))
 
     # region Plotting
+
+    #Plotting as a function of time --> result[('Global', 't')]
+
     fig, ax = plt.subplots(3)
     fig.suptitle('Generator speed, power angle and electric power')
     ax[0].plot(result[('Global', 't')], result.xs(key='speed', axis='columns', level=1))
     ax[0].set_ylabel('Speed (p.u.)')
     ax[1].plot(result[('Global', 't')], result.xs(key='angle', axis='columns', level=1))
     ax[1].set_ylabel('Power angle (rad)')
+    #ax[1].plot(result[('Global', 't')], np.array(P_m_stored))
+    #ax[1].set_ylabel('Mech. power (p.u.)')
     ax[2].plot(result[('Global', 't')], np.array(P_e_stored)/[50, 10000])
     ax[2].set_ylabel('Elec. power (p.u.)')
-    ax[2].set_xlabel('time (s)')
+    ax[2].set_xlabel('Time (s)')
+
+    #Plotting as a function of power angle --> result.xs(key='angle', axis='columns', level=1)
+
+
 
     plt.figure()
     plt.plot(result[('Global', 't')], np.array(E_f_stored))
-    plt.xlabel('time (s)')
+    plt.xlabel('Time (s)')
     plt.ylabel('E_q (p.u.)')
     plt.show()
     # endregion
