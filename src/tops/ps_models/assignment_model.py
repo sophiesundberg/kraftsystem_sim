@@ -53,21 +53,41 @@ def load():
         'generators': {
             'GEN': [
                 ['name',   'bus',  'S_n',  'V_n',    'P',    'V',      'H',    'D',    'X_d',  'X_q',  'X_d_t',    'X_q_t',    'X_d_st',   'X_q_st',   'T_d0_t',   'T_q0_t',   'T_d0_st',  'T_q0_st'],
-                ['G1',      'B1',     50,     10,     40,  0.933,      3.1,      0,     1.05,   0.66,    0.328,      0.66,       0.254,      0.273,       2.49,      10000,         0.06,       0.15],
+                ['G1',      'B1',     40,     10,     32,  0.933,      3.1,      0,     1.05,   0.66,    0.328,      0.66,       0.254,      0.273,       2.49,      10000,         0.06,       0.15],
                 ['IB',      'B3',  10000,    245,    -15,  0.898,   1000.0,      0,     1.05,   0.66,    0.328,      0.66,       0.254,      0.273,       2.49,      10000,         0.06,       0.15],
             ],
-        }
-    }
-        #For 'IB': change only 'V_n', 'P' and 'V' if necessary. Other parameters should be left as they are.
+        },
 
-        #'S_n': base/nominal complex power in [MVA].
-        #'V_n': base/nominal voltage in [kV].
-        #'P': active power produced by the generator in [MW].
-        #'V': magnitude of generator terminal voltage in [pu].
-        #'H': inertia constant in [MWs/MVA].
-        #'D': damping constant in [pu-power/pu-speed].
-        #'X_d'/'X_q': synchronous d-axis/q-axis reactance in [pu].
-        #'X_d_t'/'X_q_t': transient d-axis/q-axis reactance in [pu].
-        #'X_d_st'/'X_q_st': subtransient d-axis/q-axis reactance in [pu].
-        #'T_d0_t'/'T_q0_t': open-circuit d-axis/q-axis transient time constant in [s].
+        # For 'IB': change only 'V_n', 'P' and 'V' if necessary. Other parameters should be left as they are.
+
+        # 'S_n': base/nominal complex power in [MVA].
+        # 'V_n': base/nominal voltage in [kV].
+        # 'P': active power produced by the generator in [MW].
+        # 'V': magnitude of generator terminal voltage in [pu].
+        # 'H': inertia constant in [MWs/MVA].
+        # 'D': damping constant in [pu-power/pu-speed].
+        # 'X_d'/'X_q': synchronous d-axis/q-axis reactance in [pu].
+        # 'X_d_t'/'X_q_t': transient d-axis/q-axis reactance in [pu].
+        # 'X_d_st'/'X_q_st': subtransient d-axis/q-axis reactance in [pu].
+        # 'T_d0_t'/'T_q0_t': open-circuit d-axis/q-axis transient time constant in [s].
         # 'T_d0_st'/'T_q0_st': open-circuit d-axis/q-axis subtransient time constant in [s].
+
+
+        ################ Assignment 6: Synchronous machine controllers ####################
+
+        #  'avr': {
+        #      'SEXS': [
+        #          ['name', 'gen', 'K', 'T_a', 'T_b', 'T_e', 'E_min', 'E_max'],
+        #          ['AVR1', 'G1', 100, 2.0, 10.0, 0.5, -3, 3],
+        #      ]
+        #  },
+        # #
+        #  'gov': {
+        #      'TGOV1': [
+        #          ['name', 'gen', 'R', 'D_t', 'V_min', 'V_max', 'T_1', 'T_2', 'T_3'],
+        #          ['GOV1', 'G1', 0.05, 0.02, 0, 1, 0.1, 0.09, 0.2],
+        #      ]
+        #  },
+
+        ####################################################################################
+    }
