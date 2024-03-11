@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
         #################################################################################
 
-        ######  Assignment 5: Short-circuit with line disconnection & reconnection ######
+        #####  Assignment 5/6: Short-circuit with line disconnection & reconnection #####
 
         #if (...) and (...):
         #   (...)
@@ -93,6 +93,7 @@ if __name__ == '__main__':
         #if (...) and (...):
         #    (...)
         #    ps.lines['Line'].event(ps, ps.lines['Line'].par['name'][0], 'connect')
+
         #################################################################################
 
         # region Store variables
@@ -104,7 +105,8 @@ if __name__ == '__main__':
         E_f_stored.append(ps.gen['GEN'].E_f(x, v).copy())
 
         I_gen = ps.y_bus_red_full[0, 1] * (v[0] - v[1])
-        I_stored.append(np.abs(I_gen))
+        I_stored.append(np.abs(I_gen)) #Stores magnitude of armature current
+        v_bus.append(np.abs(v[0])) #Stores magnitude of generator terminal voltage
         # endregion
 
 
