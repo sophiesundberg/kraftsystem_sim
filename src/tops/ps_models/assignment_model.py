@@ -73,7 +73,7 @@ def load():
         # 'T_d0_st'/'T_q0_st': open-circuit d-axis/q-axis subtransient time constant in [s].
 
 
-        ################ Assignment 6: Synchronous machine controllers ####################
+        ################ Assignment 6/7: Synchronous machine controllers ####################
 
         #  'avr': {
         #      'SEXS': [
