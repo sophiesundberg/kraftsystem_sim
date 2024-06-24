@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "kraftsystem_sim",
+			"path": "."
+		},
+		{
+			"name": "TOPS",
+			"path": "../../../PycharmProjects/TOPS"
+		}
+	],
+	"settings": {}
+}
