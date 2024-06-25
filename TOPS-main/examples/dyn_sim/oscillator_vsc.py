@@ -6,9 +6,20 @@ import tops.dynamic as dps
 import tops.solvers as dps_sol
 import importlib
 importlib.reload(dps)
+import importlib.util
+import sys
 
 # region Model loading and initialisation stage
-from tops.ps_models import one_vsc_ib as model_data
+# from tops.ps_models import one_vsc_ib as model_data
+    # Spesifiser filsti og modulnavn
+module_path = "C:\\Users\\audun\\OneDrive - University of Bergen\\Dokumenter\\Collaborative_Python\\kraftsystem_sim\\TOPS-main\\src\\tops\\ps_models\\one_vsc_ib.py"
+module_name = "model_data"
+
+# Last inn modulen
+spec = importlib.util.spec_from_file_location(module_name, module_path)
+model_data = importlib.util.module_from_spec(spec)
+sys.modules[module_name] = model_data
+spec.loader.exec_module(model_data)
 model = model_data.load()
 ps = dps.PowerSystemModel(model=model)  # Load into a PowerSystemModel object
 

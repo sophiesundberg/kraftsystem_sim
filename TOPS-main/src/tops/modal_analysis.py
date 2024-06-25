@@ -246,7 +246,8 @@ if __name__ == '__main__':
 
     ps = dps.PowerSystemModel(model_data.load())
     ps.setup()
-    ps.build_y_bus('lf')
+    # ps.build_y_bus('lf')
+    ps.build_y_bus_lf
     ps.power_flow()
     ps.init_dyn_sim()
 
